@@ -9,4 +9,4 @@ include_directories(./lib/FatFs_SPI/**)
 
 # Generate the link library
 add_library(examples ${DIR_examples_SRCS})
-target_link_libraries(examples PUBLIC Config)
+target_link_libraries(examples PUBLIC Config pico_rand)

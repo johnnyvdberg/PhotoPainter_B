@@ -5,6 +5,14 @@
 
 #define fileNumber 100
 #define fileLen 100
+#define maxLineLength 128
+
+typedef struct {
+    int mode;
+    int min_refresh;
+    int max_refresh;
+} Config;
+
 
 char sdTest(void);
 void sdInitTest(void);
@@ -21,5 +29,8 @@ void setFilePath(void);
 
 void updatePathIndex(void);
 void file_sort();
+
+bool selectRandomFile(char *filePath, size_t pathSize);
+int readConfig(const char *path, Config *cfg);
 
 #endif

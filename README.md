@@ -1,5 +1,36 @@
 # PhotoPainter (B)
 
+## Custom firmware
+
+While the original firmware is adequate for some photos, I think we can do a bit better.
+
+So this firmware has the following changes:
+- Added mode 3 that will randomly select an image. It supports as many as you can fit on your SD card (FAT32). Tested with 2000+ images without issue.
+- Added config.txt. Including this on the root of your SD card with the following `3,1800,3600` will configure Mode 3 with a minimum refresh rate of 1800 seconds (half an hour) and a maximum of 3600 seconds (an hour). If you don't want variable refresh rates, use the same value for min/max
+- Because of this, only one firmware file should be sufficient for all use cases. Check the releases page
+
+### Using this
+1. Add config.txt with `3,1800,3600` to root of SD card (or whatever seconds you'd like, should be pretty flexible). Then add all your pictures to `pic` folder. 
+2. Press boot and run button (small buttons) together and release, this should expose the picture frame as a flash drive. Drag the uf2 file into the folder.
+3. Press run button after flash drive disappears. If it doesn't automatically start displaying an image, push the next button. Done!
+
+## Bonus
+### Picture preparation
+
+While the instructions work, I've found that the contrast and saturation is lacking. For best results, boost the saturation, contrast and brightness. Or using something like PIL for Python: 
+
+```
+  enhanced_image = ImageEnhance.Contrast(processed_image).enhance(1.2)
+  enhanced_image = ImageEnhance.Brightness(enhanced_image).enhance(1.1)
+  enhanced_image = ImageEnhance.Color(enhanced_image).enhance(1.5)
+```
+
+I've included a python script for convenience. Thanks @matthewbadeau for the original script!
+
+### Obligatory excuses
+
+The original code has some unreadable/messy parts, therefore I took the liberty of some shortcuts to not have to deal with those. Shouldn't affect the functionality, only the readability of the code.
+
 ## Waveshare Electronics
 waveshare electronics</br>
 ![waveshare_logo.png](waveshare_logo.png)

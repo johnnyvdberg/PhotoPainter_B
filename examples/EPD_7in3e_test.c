@@ -38,7 +38,7 @@
 #include <stdlib.h> // malloc() free()
 #include <string.h>
 
-int EPD_7in3e_display_BMP(const char *path, float vol)
+int EPD_7in3e_display_BMP(const char *path, float vol, char shouldUpdateIndex)
 {
     printf("e-Paper Init and Clear...\r\n");
     EPD_7IN3E_Init();
@@ -79,8 +79,10 @@ int EPD_7in3e_display_BMP(const char *path, float vol)
 
     run_unmount();
 #endif
-    printf("Update Path Index...\r\n");
-    updatePathIndex();
+    if (shouldUpdateIndex) {
+        printf("Update Path Index...\r\n");
+        updatePathIndex();
+    }
 
     printf("Goto Sleep...\r\n\r\n");
     EPD_7IN3E_Sleep();

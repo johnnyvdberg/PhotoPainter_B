@@ -55,7 +55,7 @@ static spi_t spis[] = {  // One for each SPI.
            can only mangage 5 MHz. Those are all I've tried. */
         //.baud_rate = 1000 * 1000,
         .baud_rate = 12500 * 1000,  // The limitation here is SPI slew rate.
-        //.baud_rate = 25 * 1000 * 1000, // Actual frequency: 20833333. Has
+        // .baud_rate = 20 * 1000 * 1000, // Actual frequency: 20833333. Has
         // worked for me with SanDisk.
 
         .dma_isr = spi_dma_isr
